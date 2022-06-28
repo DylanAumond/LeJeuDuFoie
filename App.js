@@ -6,6 +6,7 @@ import Home from './screens/Home'
 import Players from "./screens/Players";
 import BoardGame from "./screens/BoardGame";
 import { GameProvider } from "./GameContext";
+import Insctruction from "./screens/Insctruction";
 
 const Stack = createNativeStackNavigator()
 
@@ -22,6 +23,7 @@ const App = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Players" component={Players} />
         <Stack.Screen name="BoardGame" component={BoardGame}/>
+        <Stack.Screen name="Insctruction" component={Insctruction}/>
       </Stack.Navigator>
     </NavigationContainer>
   </GameProvider>

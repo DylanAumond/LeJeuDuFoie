@@ -14,7 +14,9 @@ const Players = () => {
     function addPlayer(){
       const newPlayer = {pseudo:playerInput, position: 0}
       if(checkPlayerPseudo(newPlayer.pseudo)){
+        // reset the player's input value
         setPlayerInput('')
+        // update the players' list
         return setPlayers([...players,newPlayer])
       }
     }
@@ -24,10 +26,12 @@ const Players = () => {
     }
     //check player pseudo
     function checkPlayerPseudo(pseudo){
+      // check player's pseudo length
       if(pseudo.length < 3){
         console.log("Player pseudo must be at least 3 characters long")
         return false
       }
+      // check player's pseudo is unique
       if(players.filter(player => player.pseudo === pseudo).length > 0){
         console.log("Player pseudo must be unique")
         return false
@@ -40,7 +44,7 @@ const Players = () => {
         {/* Screen's Title */}
         <Text>Ajouter un joueur!</Text>
 
-        {/* render players' list */}
+        {/* for each player return a component */}
         <FlatList 
         data={players}
         renderItem={( {item} ) => <Player player={item} delete={deletePlayer}/>}
