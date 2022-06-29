@@ -35,9 +35,9 @@ const BoardGame = () => {
   function calcPosition(position,diceScore){
     let newPosition = position + diceScore
     // check if the new position is possible
-    if(newPosition > casesData.length){
+    if(newPosition > casesData.length-1){
       // return the new position
-      return position + (casesData.length - newPosition)
+      return position + ((casesData.length-1) - newPosition)
     }
     return newPosition
   }
