@@ -43,7 +43,7 @@ const BoardGame = () => {
   }
 
   // handle press on a case
-  const onPressCaseModalHandler = (modalState, modalCase) => {
+  const onPressCaseModalHandler = (modalState, modalCase,players) => {
     // set the case modal visibility
     setCaseModalOpen(modalState)
     // set the case modal data
@@ -62,7 +62,7 @@ const BoardGame = () => {
           numColumns={6}
           />
           {/* case's modal */}
-          <CaseModal case={caseSelected} isOpen={isCaseModalOpen}/>
+          <CaseModal case={caseSelected} isOpen={isCaseModalOpen} />
           {/* play modal */}
           {/* button to roll the dice */}
           <Button title='roll dice' onPress={()=>rollDice()}/>
