@@ -66,47 +66,47 @@ export const casesData = [
         image: require('./images/drink.png')
     },
     {
-        id: 14,
+        id: 13,
         rule: 'Les autres joueurs boivent 3 gorgées',
         image: require('./images/other.png')
     },
     {
-        id: 15,
+        id: 14,
         rule: 'Retourne à la case départ',
         image: require('./images/goBack.png')
     },
     {
-        id: 16,
+        id: 15,
         rule: 'Fais une action imposée par les autres joueurs ou un cul sec',
         image: require('./images/action.png')
     },
     {
-        id: 17,
+        id: 16,
         rule: 'Repos soldat',
         image: require('./images/rest.png')
     },
     {
-        id: 18,
+        id: 17,
         rule: 'bois 2 gorgées',
         image: require('./images/drink.png')
     },
     {
-        id: 19,
+        id: 18,
         rule: 'Bois une gorgée pour chaque joueur',
         image: require('./images/people.png')
     },
     {
-        id: 20,
+        id: 19,
         rule: 'Tu répond à une question ou tu bois 3 gorgées',
         image: require('./images/question.png')
     },
     {
-        id: 21,
+        id: 20,
         rule: 'Distribue 3 gorgées',
         image: require('./images/giveDrink.png')
     },
     {
-        id: 22,
+        id: 21,
         rule: 'Dis quelque chose que tu n a jamais fais tout les joueurs qui l on déjà fait boivent 3 gorgées',
         image: require('./images/never.png')
     },
