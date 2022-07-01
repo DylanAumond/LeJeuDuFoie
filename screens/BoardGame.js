@@ -59,11 +59,11 @@ const BoardGame = () => {
           {/* game's cases */}
           <FlatList data={casesData}
           renderItem={({ item })=> <Case caseData={item} caseModal={onPressCaseModalHandler}/>}
+          listKey={(item) => item.id}
           numColumns={6}
           />
           {/* case's modal */}
           <CaseModal case={caseSelected} isOpen={isCaseModalOpen} />
-          {/* play modal */}
           {/* button to roll the dice */}
           <Button title='roll dice' onPress={()=>rollDice()}/>
     </SafeAreaView>

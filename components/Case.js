@@ -20,7 +20,7 @@ const Case = ({caseData,caseModal}) => {
         <FlatList
         data={playersOnCase}
         renderItem={( { item }) => <PlayerPawn player={item}/>}
-        keyExtractor={(item) => item.name}
+        listKey={(item) => item.pseudo}
         />
       </ImageBackground>
     </TouchableOpacity>
