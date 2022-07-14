@@ -1,6 +1,6 @@
 export function playerAction(action,payload){
     switch(action){
-        case 'move':{
+        case 'teleportation':{
             return moveplayer(payload.player,payload.caseId)
         }
         case 'next':{
@@ -11,7 +11,7 @@ export function playerAction(action,payload){
 
 //Make a player moove
 function moveplayer(player, caseId){
-    player.posistion = caseId;
+    return player.position = caseId;
 }
 
 // get the next player
@@ -19,5 +19,6 @@ function getNextPlayer(players,currentPlayer){
     if(currentPlayer+1 < players.length){
         return currentPlayer + 1
     }
+    // if next player is the first player
     return currentPlayer = 0
 }

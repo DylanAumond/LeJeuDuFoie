@@ -2,12 +2,15 @@ import React from 'react'
 import { Modal, Text, View } from 'react-native'
 
 const CaseModal = ({...props}) => {
-  const players = () => { 
-    if (players.length > 0) {
-      console.log(players)
-    props.players.map((player)=> {<Text>{player.pseudo}</Text>}) 
+  // return all players on the selected case
+  const players = () => {
+    // check if at least a player is on the selected case
+    if (props.playersOnCase.length > 0) {
+      //for each player on the selected case return the player's pseudo
+     return props.playersOnCase.map((player,index)=> <Text key={index}>{player.pseudo}</Text>) 
     }
-    return (<Text> Il n'y a pas de joeueur sur cette case</Text>)
+    // if no players are on the selected case
+    return (<Text> Il n'y a pas de joueur sur cette case</Text>)
   }
   return (
     <Modal
@@ -17,6 +20,7 @@ const CaseModal = ({...props}) => {
         {/* Modal Content */}
         <View style={{width: '100%',height: '40%',backgroundColor: 'white',marginTop: '50%'}}>
             {props.case !== undefined ? <Text>{props.case.rule}</Text> : <Text>not found</Text>}
+            {/* list of players  */}
             { players()}
         </View>
     </Modal>

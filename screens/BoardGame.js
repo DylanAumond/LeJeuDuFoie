@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, FlatList, SafeAreaView, StatusBar, Text, View } from 'react-native'
 import { GameContexts } from '../GameContext'
 import { casesData } from '../assets/Casesdata'
@@ -8,31 +8,55 @@ import { useNavigation } from '@react-navigation/native'
 
 const BoardGame = () => {
   const navigation = useNavigation();
-  // case's modal data
+
+    // get the game's context
+    const {
+      players,setPlayers,  // players' list
+      currentPlayer,setCurrentPlayer // current player
+    }= useContext(GameContexts)
+    
+
+  // caseModal data
   const [caseSelected,setCaseSelected] = useState()
-  // case's modal visibility
+  // caseModal visibility
   const [isCaseModalOpen,setCaseModalOpen] = useState(false)
-  // get the game's context
-  const {
-    players,setPlayers,  // players' list
-    currentPlayer,setCurrentPlayer // current player
-  }= useContext(GameContexts)
-  
+  // caseModal players's list
+  const [playersOnCaseSelected,setPlayersOnCaseSelected] = useState([])
+    
+
   function rollDice(){
     // get a random number between 1 and 6
     const diceScore = Math.floor(Math.random() * (6) + 1)
+
     // new player's position
     const newPosition = calcPosition(players[currentPlayer].position,diceScore)
-    // create a mutable players' list
-    const updatedPlayers = [...players]
-    // update current players's position
-    updatedPlayers[currentPlayer].position = newPosition
-    // save the new players' position
-    setPlayers(updatedPlayers)
-    navigation.navigate('Insctruction',{case:casesData[newPosition]})
+
+    // current player moves until he arrived to his new position
+    const animationMoove = setInterval(() => {
+      // if current player's position is lower than the new position
+      if(players[currentPlayer].position < newPosition) {
+        //player moves forward
+        players[currentPlayer].position ++
+        // refresh players' list
+        return setPlayers([...players])
+      }
+      // if current player's position is higher than the new position
+      if(players[currentPlayer].position > newPosition) {
+        //player moves forward
+        players[currentPlayer].position --
+        // refresh players' list
+        return setPlayers([...players])
+      }
+      // clear the interval
+      clearInterval(animationMoove)
+      // redirect player to the instruction's page
+      navigation.navigate('Insctruction',{case:casesData[newPosition]})
+    }, 500)
   }
+
   // caluate the new players' position
   function calcPosition(position,diceScore){
+    // caluculate the new players' position
     let newPosition = position + diceScore
     // check if the new position is possible
     if(newPosition > casesData.length-1){
@@ -43,11 +67,13 @@ const BoardGame = () => {
   }
 
   // handle press on a case
-  const onPressCaseModalHandler = (modalState, modalCase,players) => {
-    // set the case modal visibility
+  const onPressCaseModalHandler = (modalState, modalCase, players) => {
+    // set the casModal visibility
     setCaseModalOpen(modalState)
-    // set the case modal data
+    // set the selected case
     setCaseSelected(modalCase)
+    // set the casSelected players list
+    setPlayersOnCaseSelected(players)
   }
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -63,7 +89,7 @@ const BoardGame = () => {
           numColumns={6}
           />
           {/* case's modal */}
-          <CaseModal case={caseSelected} isOpen={isCaseModalOpen} />
+          <CaseModal case={caseSelected} isOpen={isCaseModalOpen} playersOnCase={playersOnCaseSelected}/>
           {/* button to roll the dice */}
           <Button title='roll dice' onPress={()=>rollDice()}/>
     </SafeAreaView>

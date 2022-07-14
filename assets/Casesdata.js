@@ -2,7 +2,8 @@ export const casesData = [
     {
         id: 0,
         rule: 'start',
-        image: require('./images/start.png')
+        image: require('./images/start.png'),
+        
     }
     ,
     {
@@ -37,8 +38,14 @@ export const casesData = [
     },
     {
         id: 7,
-        rule: 'Va à la case 15',
-        image: require('./images/teleporter.png')
+        rule: 'Va à la case 16',
+        image: require('./images/teleporter.png'),
+        action: {
+            type:"teleportation",
+            data:{
+                case: 16
+            }
+        }
     },
     {
         id: 8,
@@ -73,7 +80,13 @@ export const casesData = [
     {
         id: 14,
         rule: 'Retourne à la case départ',
-        image: require('./images/goBack.png')
+        image: require('./images/goBack.png'),
+        action: {
+            type:"teleportation",
+            data:{
+                case: 0
+            }
+        }
     },
     {
         id: 15,
@@ -178,7 +191,13 @@ export const casesData = [
     {
         id: 35,
         rule: 'Va à la case 42',
-        image: require('./images/teleporter.png')
+        image: require('./images/teleporter.png'),
+        action: {
+            type:"teleportation",
+            data:{
+                case: 43
+            }
+        }
     },
     {
         id: 36,
@@ -210,15 +229,21 @@ export const casesData = [
         rule: 'Distribue 2 gorgées',
         image: require('./images/giveDrink.png')
     },
-    {
+   {
         id: 42,
+        rule: 'Va à la case 35',
+        image: require('./images/teleporter.png'),
+        action: {
+            type:"teleportation",
+            data:{
+                case: 35
+            }
+        }
+    },
+    {
+        id: 43,
         rule: 'Bois 3 gorgées',
         image: require('./images/drink.png')
-    },
-   {
-        id: 43,
-        rule: 'Va à la case 35',
-        image: require('./images/teleporter.png')
     },
     {
         id: 44,
