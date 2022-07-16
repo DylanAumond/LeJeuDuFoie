@@ -9,12 +9,15 @@ import { useNavigation } from '@react-navigation/native'
 const BoardGame = () => {
   const navigation = useNavigation();
 
-    // get the game's context
-    const {
-      players,setPlayers,  // players' list
-      currentPlayer,setCurrentPlayer // current player
-    }= useContext(GameContexts)
-    
+  // get the game's context
+  const {
+    players,setPlayers,  // players' list
+    currentPlayer,setCurrentPlayer // current player
+  }= useContext(GameContexts)
+
+  // enable player to do action
+  const [wait,setWait] = useState(false)
+  
 
   // caseModal data
   const [caseSelected,setCaseSelected] = useState()
@@ -25,6 +28,9 @@ const BoardGame = () => {
     
 
   function rollDice(){
+    // enable player to play until turn is ended
+    setWait(true)
+
     // get a random number between 1 and 6
     const diceScore = Math.floor(Math.random() * (6) + 1)
 
@@ -49,14 +55,16 @@ const BoardGame = () => {
       }
       // clear the interval
       clearInterval(animationMoove)
+      // reset the wait
+      setWait(false)
       // redirect player to the instruction's page
       navigation.navigate('Insctruction',{case:casesData[newPosition]})
     }, 500)
   }
 
-  // caluate the new players' position
+  // calculate the new players' position
   function calcPosition(position,diceScore){
-    // caluculate the new players' position
+    // calculate the new players' position
     let newPosition = position + diceScore
     // check if the new position is possible
     if(newPosition > casesData.length-1){
@@ -91,7 +99,7 @@ const BoardGame = () => {
           {/* case's modal */}
           <CaseModal case={caseSelected} isOpen={isCaseModalOpen} playersOnCase={playersOnCaseSelected}/>
           {/* button to roll the dice */}
-          <Button title='roll dice' onPress={()=>rollDice()}/>
+          <Button title='roll dice' disabled={wait} onPress={()=>rollDice()}/>
     </SafeAreaView>
   )
 }

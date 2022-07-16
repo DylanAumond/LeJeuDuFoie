@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavigationContainer, StackRouter } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
 
 import Home from './screens/Home'
 import Players from "./screens/Players";
 import BoardGame from "./screens/BoardGame";
 import { GameProvider } from "./GameContext";
 import Insctruction from "./screens/Insctruction";
+import { useFonts } from 'expo-font';
+
 
 const Stack = createNativeStackNavigator()
 
-const App = () => {
+export default function App() {
+  const [loaded] = useFonts({
+    Nickainley: require('./assets/fonts/Nickainley-Normal.otf'),
+  });
+  
+  if (!loaded) {
+    return null;
+  }
+
   return (
   <GameProvider>
     <NavigationContainer>
@@ -27,7 +38,6 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   </GameProvider>
-  );
+  )
 }
 
-export default App;

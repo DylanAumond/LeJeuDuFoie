@@ -8,7 +8,8 @@ const Home = () => {
     <SafeAreaView style={{flex: 1}}>
       <StatusBar/>
         {/* Game's title */}
-        <Text>Le Jeu Du Foie</Text>
+        <Text style={{fontFamily: 'Nickainley',fontSize:80,color: 'white'}}>Le jeu</Text>
+        <Text style={{fontFamily: 'Nickainley',fontSize:80}}>du foie</Text>
         {/* Button Play */}
         <Button title="Play" onPress={() => navigation.navigate('Players')}/>
     </SafeAreaView>
