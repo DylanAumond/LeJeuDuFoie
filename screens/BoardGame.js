@@ -1,99 +1,116 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button, FlatList, SafeAreaView, StatusBar, Text, View } from 'react-native'
-import { GameContexts } from '../GameContext'
-import { casesData } from '../assets/Casesdata'
-import Case from '../components/Case'
-import CaseModal from '../components/CaseModal'
-import { useNavigation } from '@react-navigation/native'
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Button,
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+  Text,
+  View,
+} from "react-native";
+import { GameContexts } from "../GameContext";
+import { casesData } from "../assets/Casesdata";
+import Case from "../components/Case";
+import CaseModal from "../components/CaseModal";
+import { useNavigation } from "@react-navigation/native";
 
 const BoardGame = () => {
   const navigation = useNavigation();
 
-    // get the game's context
-    const {
-      players,setPlayers,  // players' list
-      currentPlayer,setCurrentPlayer // current player
-    }= useContext(GameContexts)
-    
+  // get the game's context
+  const {
+    players,
+    setPlayers, // players' list
+    currentPlayer,
+    setCurrentPlayer, // current player
+  } = useContext(GameContexts);
 
   // caseModal data
-  const [caseSelected,setCaseSelected] = useState()
+  const [caseSelected, setCaseSelected] = useState();
   // caseModal visibility
-  const [isCaseModalOpen,setCaseModalOpen] = useState(false)
+  const [isCaseModalOpen, setCaseModalOpen] = useState(false);
   // caseModal players's list
-  const [playersOnCaseSelected,setPlayersOnCaseSelected] = useState([])
-    
+  const [playersOnCaseSelected, setPlayersOnCaseSelected] = useState([]);
 
-  function rollDice(){
+  function rollDice() {
     // get a random number between 1 and 6
-    const diceScore = Math.floor(Math.random() * (6) + 1)
+    const diceScore = Math.floor(Math.random() * 6 + 1);
 
     // new player's position
-    const newPosition = calcPosition(players[currentPlayer].position,diceScore)
+    const newPosition = calcPosition(
+      players[currentPlayer].position,
+      diceScore
+    );
 
     // current player moves until he arrived to his new position
     const animationMoove = setInterval(() => {
       // if current player's position is lower than the new position
-      if(players[currentPlayer].position < newPosition) {
+      if (players[currentPlayer].position < newPosition) {
         //player moves forward
-        players[currentPlayer].position ++
+        players[currentPlayer].position++;
         // refresh players' list
-        return setPlayers([...players])
+        return setPlayers([...players]);
       }
       // if current player's position is higher than the new position
-      if(players[currentPlayer].position > newPosition) {
+      if (players[currentPlayer].position > newPosition) {
         //player moves forward
-        players[currentPlayer].position --
+        players[currentPlayer].position--;
         // refresh players' list
-        return setPlayers([...players])
+        return setPlayers([...players]);
       }
       // clear the interval
-      clearInterval(animationMoove)
+      clearInterval(animationMoove);
       // redirect player to the instruction's page
-      navigation.navigate('Insctruction',{case:casesData[newPosition]})
-    }, 500)
+      navigation.navigate("Insctruction", { case: casesData[newPosition] });
+    }, 500);
   }
 
   // caluate the new players' position
-  function calcPosition(position,diceScore){
+  function calcPosition(position, diceScore) {
     // caluculate the new players' position
-    let newPosition = position + diceScore
+    let newPosition = position + diceScore;
     // check if the new position is possible
-    if(newPosition > casesData.length-1){
+    if (newPosition > casesData.length - 1) {
       // return the new position
-      return position + ((casesData.length-1) - newPosition)
+      return position + (casesData.length - 1 - newPosition);
     }
-    return newPosition
+    return newPosition;
   }
 
   // handle press on a case
   const onPressCaseModalHandler = (modalState, modalCase, players) => {
     // set the casModal visibility
-    setCaseModalOpen(modalState)
+    setCaseModalOpen(modalState);
     // set the selected case
-    setCaseSelected(modalCase)
+    setCaseSelected(modalCase);
     // set the casSelected players list
-    setPlayersOnCaseSelected(players)
-  }
+    setPlayersOnCaseSelected(players);
+  };
   return (
-    <SafeAreaView style={{flex: 1}}>
-        <StatusBar/>
-          {/* current Player's pseudo */}
-          <Text>{players[currentPlayer].pseudo}</Text>
-          {/* current Player's position */}
-          <Text>{players[currentPlayer].position}</Text>
-          {/* game's cases */}
-          <FlatList data={casesData}
-          renderItem={({ item })=> <Case caseData={item} caseModal={onPressCaseModalHandler}/>}
-          listKey={(item) => item.id}
-          numColumns={6}
-          />
-          {/* case's modal */}
-          <CaseModal case={caseSelected} isOpen={isCaseModalOpen} playersOnCase={playersOnCaseSelected}/>
-          {/* button to roll the dice */}
-          <Button title='roll dice' onPress={()=>rollDice()}/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar />
+      {/* current Player's pseudo */}
+      <Text>Au tour de {players[currentPlayer].pseudo}</Text>
+      {/* current Player's position */}
+      <Text> case : {players[currentPlayer].position}</Text>
+      {/* game's cases */}
+      <FlatList
+        data={casesData}
+        renderItem={({ item }) => (
+          <Case caseData={item} caseModal={onPressCaseModalHandler} />
+        )}
+        listKey={item => item.id}
+        numColumns={6}
+      />
+      {/* case's modal */}
+      <CaseModal
+        case={caseSelected}
+        isOpen={isCaseModalOpen}
+        playersOnCase={playersOnCaseSelected}
+      />
+      {/* button to roll the dice */}
+      <Button title="roll dice" onPress={() => rollDice()} />
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default BoardGame
+export default BoardGame;
