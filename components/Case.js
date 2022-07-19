@@ -38,7 +38,7 @@ const Case = ({ caseData, caseModal }) => {
       <ImageBackground
         source={caseData.image}
         resizeMode="contain"
-        style={styles.bg}
+        style={{flex:1, justifyContent: "center"}}
       >
         {/* players who are on the case */}
         <FlatList
@@ -51,6 +51,5 @@ const Case = ({ caseData, caseModal }) => {
   );
 };
 
-const styles = StyleSheet.create({});
 
 export default Case;
