@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Button,
   FlatList,
-  ImageBackground,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -51,92 +50,48 @@ const Players = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      <ImageBackground
-        style={styles.screen}
-        source={require("../assets/images/bgHome2.jpg")}
-      >
-        {/* Screen's Title */}
-        <View style={styles.boxTitle}>
-          <Text style={styles.title}>Ajouter un joueur!</Text>
-        </View>
+      {/* Screen's Title */}
+      <View>
+        <Text>Ajouter un joueur!</Text>
+      </View>
 
-        {/* for each player return a component */}
-        <FlatList
-          style={styles.listPlayers}
-          data={players}
-          renderItem={({ item }) => (
-            <Player player={item} delete={deletePlayer} />
-          )}
-          keyExtractor={player => player.pseudo}
-          showsVerticalScrollIndicator={false}
-          nestedScrollEnabled
+      {/* for each player return a component */}
+      <FlatList
+        data={players}
+        renderItem={({ item }) => (
+          <Player player={item} delete={deletePlayer} />
+        )}
+        keyExtractor={player => player.pseudo}
+        showsVerticalScrollIndicator={false}
+        nestedScrollEnabled
+      />
+
+      {/* player's input */}
+      <TextInput
+        value={playerInput}
+        onChangeText={e => setPlayerInput(e)}
+        placeholder="nom du joueur"
+        maxLength={15}
+      />
+
+      {/* button to add player */}
+      <View>
+        <Button title="+" color={"#3f5efb"} onPress={() => addPlayer()} />
+      </View>
+
+      {/* button to add player */}
+      <View>
+        <Button
+          color={"#3f5efb"}
+          disabled={players.length > 0 ? false : true}
+          title="Play"
+          onPress={() => navigation.navigate("BoardGame")}
         />
-
-        {/* player's input */}
-        <TextInput
-          value={playerInput}
-          onChangeText={e => setPlayerInput(e)}
-          placeholder="nom du joueur"
-          maxLength={15}
-          style={styles.textInput}
-        />
-
-        {/* button to add player */}
-        <View style={styles.button}>
-          <Button title="+" color={"#3f5efb"} onPress={() => addPlayer()} />
-        </View>
-
-        {/* button to add player */}
-        <View style={styles.button}>
-          <Button
-            color={"#3f5efb"}
-            disabled={players.length > 0 ? false : true}
-            title="Play"
-            onPress={() => navigation.navigate("BoardGame")}
-          />
-        </View>
-      </ImageBackground>
+      </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  boxTitle: {
-    width: "100%",
-    height: "10%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 20,
-    color: "white",
-  },
-  listPlayers: {
-    width: "100%",
-    height: "10%",
-    backgroundColor: "red",
-    marginBottom: 10,
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: "white",
-    paddingVertical: 5,
-    paddingHorizontal: 25,
-    marginVertical: 10,
-    borderRadius: 10,
-  },
-  button: {
-    width: "50%",
-    marginVertical: 10,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Players;
