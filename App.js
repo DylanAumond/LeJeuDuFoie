@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavigationContainer, StackRouter } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Styles from './styles'
 
 
 import Home from './screens/Home'
@@ -27,7 +26,6 @@ export default function App() {
   <GameProvider>
     <NavigationContainer>
       <Stack.Navigator
-        className="bgPrimary"
         screenOptions={{
           headerShown: false,
         }}
