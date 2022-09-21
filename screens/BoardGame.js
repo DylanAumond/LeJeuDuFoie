@@ -12,6 +12,8 @@ import { casesData } from "../assets/Casesdata";
 import Case from "../components/Case";
 import CaseModal from "../components/CaseModal";
 import { useNavigation } from "@react-navigation/native";
+import Theme from '../Theme'
+import Style from '../Styles'
 
 const BoardGame = () => {
   const navigation = useNavigation();
@@ -93,7 +95,7 @@ const BoardGame = () => {
     setPlayersOnCaseSelected(players);
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}>
         <StatusBar/>
           {/* current Player's pseudo */}
           <Text>{players[currentPlayer].pseudo}</Text>

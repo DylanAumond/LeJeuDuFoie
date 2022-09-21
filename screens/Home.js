@@ -11,6 +11,8 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
+import Theme from "../Theme";
+import Style from "../Styles";
 
 import Logo from "../components/Logo";
 import Theme from "../Theme";
@@ -20,7 +22,7 @@ const Home = () => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: Styles.MAIN_BACKGROUND_COLOR }}
+      style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}
     >
       <StatusBar />
       {/* Logo */}

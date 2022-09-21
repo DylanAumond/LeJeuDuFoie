@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Button, SafeAreaView, StatusBar, Text } from 'react-native'
 import { playerAction } from '../actions/player'
 import { GameContexts } from '../GameContext'
+import Theme from '../Theme'
+import Style from '../Styles'
 
 const Insctruction = ({ route, navigation }) => {
   // get the rule from the navigation's params
@@ -14,7 +16,7 @@ const Insctruction = ({ route, navigation }) => {
   }= useContext(GameContexts)
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR}}>
         <StatusBar/>
 
         {/* case's rule */}

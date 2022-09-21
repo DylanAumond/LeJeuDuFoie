@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import Player from "../components/Player";
 import { GameContexts } from "../GameContext";
+import Theme from '../Theme'
+import Style from '../Styles'
 
 const Players = () => {
   const navigation = useNavigation();
@@ -48,7 +50,7 @@ const Players = () => {
     return true;
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}>
       <StatusBar />
       {/* Screen's Title */}
       <View>
