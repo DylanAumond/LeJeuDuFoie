@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import Styles from '../Theme'
 import {
   Button,
   SafeAreaView,
@@ -9,11 +8,13 @@ import {
   Text,
   View,
 } from "react-native";
+import Theme from "../Theme";
+import Style from "../Styles";
 
 const Home = () => {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Styles.MAIN_BACKGROUND_COLOR }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}>
       <StatusBar />
       {/* Game's title */}
       <View>

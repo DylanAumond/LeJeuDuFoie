@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { GameContexts } from "../GameContext";
 import PlayerPawn from "./PlayerPawn";
+import Theme from "../Theme";
+import Style from "../Styles"
 
 const Case = ({ caseData, caseModal }) => {
   // get the game context
@@ -25,14 +27,7 @@ const Case = ({ caseData, caseModal }) => {
     <TouchableOpacity
       onPressIn={() => caseModal(true, caseData, playersOnCase)}
       onPressOut={() => caseModal(false, caseData, playersOnCase)}
-      style={{
-        backgroundColor: "red",
-        borderWidth: 1,
-        borderColor: "black",
-        flex: 1,
-        padding: 10,
-        height: 80,
-      }}
+      style={[styles.case, Style.roundedFull]}
     >
       {/* case's image */}
       <ImageBackground
@@ -50,6 +45,16 @@ const Case = ({ caseData, caseModal }) => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create ({
+  case:{
+    filter: 'invert(1)',
+    padding: 10,
+    width: 50,
+    height: 50,
+    backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
+  }
+})
 
 
 export default Case;
