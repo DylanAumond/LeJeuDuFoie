@@ -12,6 +12,7 @@ import PlayerPawn from "./PlayerPawn";
 import Theme from "../Theme";
 import Style from "../Styles"
 
+
 const Case = ({ caseData, caseModal }) => {
   // get the game context
   const {
@@ -29,12 +30,14 @@ const Case = ({ caseData, caseModal }) => {
       onPressOut={() => caseModal(false, caseData, playersOnCase)}
       style={[styles.case, Style.roundedFull]}
     >
+
       {/* case's image */}
       <ImageBackground
-        source={caseData.image}
-        resizeMode="contain"
-        style={{flex:1, justifyContent: "center"}}
-      >
+          source={caseData.image}
+          resizeMode="contain"
+          style={{flex:1, justifyContent: "center"}}
+          tintColor='white'
+        >
         {/* players who are on the case */}
         <FlatList
           data={playersOnCase}
@@ -48,10 +51,13 @@ const Case = ({ caseData, caseModal }) => {
 
 const styles = StyleSheet.create ({
   case:{
-    filter: 'invert(1)',
-    padding: 10,
-    width: 50,
-    height: 50,
+    borderWidth: 3,
+    borderColor: Theme.INPUT_MAIN_BORDER_COLOR,
+    padding: '3%',
+    margin: '0.8%',
+    width: '15%',
+    height: undefined,
+    aspectRatio: 1 / 1,
     backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
   }
 })

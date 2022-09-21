@@ -103,6 +103,7 @@ const BoardGame = () => {
           <Text>{players[currentPlayer].position}</Text>
           {/* game's cases */}
           <FlatList data={casesData}
+           contentContainerStyle={{flexGrow: 1, justifyContent: 'center', alignContent: 'center'}}
           renderItem={({ item })=> <Case caseData={item} caseModal={onPressCaseModalHandler}/>}
           listKey={(item) => item.id}
           numColumns={6}
