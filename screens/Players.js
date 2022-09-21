@@ -4,17 +4,22 @@ import { useState } from "react";
 import {
   Button,
   FlatList,
+  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from "react-native";
 import Player from "../components/Player";
 import { GameContexts } from "../GameContext";
-import Theme from '../Theme'
-import Style from '../Styles'
+import Theme from "../Theme";
+import Style from "../Styles";
+import Logo from "../components/Logo";
+import addUser from "../assets/add-user.png";
+import close from "../assets/close.png";
 
 const Players = () => {
   const navigation = useNavigation();
@@ -50,11 +55,17 @@ const Players = () => {
     return true;
   }
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}
+    >
       <StatusBar />
+      {/* Logo */}
+      <View style={styles.logo}>
+        <Logo size={"md"} />
+      </View>
       {/* Screen's Title */}
       <View>
-        <Text>Ajouter un joueur!</Text>
+        <Text style={styles.text}>Ajouter un joueur!</Text>
       </View>
 
       {/* for each player return a component */}
@@ -67,6 +78,12 @@ const Players = () => {
         showsVerticalScrollIndicator={false}
         nestedScrollEnabled
       />
+      {/* btn add users popup */}
+      <View style={styles.addUsersContainer}>
+        <TouchableOpacity onPress={() => {}}>
+          <Image source={addUser} style={styles.addUsers} />
+        </TouchableOpacity>
+      </View>
 
       {/* player's input */}
       <TextInput
@@ -94,6 +111,27 @@ const Players = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  logo: {
+    width: "100%",
+    height: "25%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    color: Theme.TEXT_MAIN_COLOR,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  addUsersContainer: {
+    width: "100%",
+    height: "10%",
+  },
+  addUsers: {
+    width: "10%",
+    height: "75%",
+  },
+});
 
 export default Players;

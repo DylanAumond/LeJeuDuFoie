@@ -15,7 +15,6 @@ import Theme from "../Theme";
 import Style from "../Styles";
 
 import Logo from "../components/Logo";
-import Theme from "../Theme";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -34,10 +33,10 @@ const Home = () => {
         <TouchableOpacity
           title="Play"
           color={"#3f5efb"}
-          style={styles.button}
+          style={Style.button}
           onPress={() => navigation.navigate("Players")}
         >
-          <Text style={styles.text}>Play</Text>
+          <Text style={Style.TextButton}>Play</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -52,11 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  button: {
-    width: "35%",
-    borderRadius: 20,
-    backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
-  },
+
   btnContainer: {
     width: "100%",
     height: "30%",
