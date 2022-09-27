@@ -16,4 +16,10 @@ module.exports = StyleSheet.create({
     fontSize: 20,
     paddingVertical: 10,
   },
+  TextButtonSm: {
+    color: Theme.TEXT_MAIN_COLOR,
+    textAlign: "center",
+    fontSize: 13,
+    paddingVertical: 10,
+  },
 });
