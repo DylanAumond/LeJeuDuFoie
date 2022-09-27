@@ -1,6 +1,6 @@
 export default {
   MAIN_BACKGROUND_COLOR: "#0B3757", // Screen background color (dark-blue)
-  PRIMARY_BACKGROUND_COLOR: "#1CA766", // PRIMARY background color (blue)
+  PRIMARY_BACKGROUND_COLOR: "#1C4766", // PRIMARY background color (blue)
   SECONDARY_BACKGROUND_COLOR: "#0B3757", // SECONDARY background color (blue)
 
   PRIMARY_BORDER_COLOR: "#0A324F", // PRIMARY BORDER COLOR (blue)

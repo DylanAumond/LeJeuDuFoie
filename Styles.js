@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import Theme from "./Theme";
 
-module.exports = StyleSheet.create({
+const Styles = StyleSheet.create({
   roundedFull: {
     borderRadius: 100,
   },
@@ -17,3 +17,5 @@ module.exports = StyleSheet.create({
     paddingVertical: 10,
   },
 });
+
+export default Styles

@@ -16,7 +16,6 @@ import {
 import Player from "../components/Player";
 import { GameContexts } from "../GameContext";
 import Theme from "../Theme";
-import Style from "../Styles";
 import Logo from "../components/Logo";
 import addUser from "../assets/add-user.png";
 import close from "../assets/close.png";

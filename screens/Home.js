@@ -1,6 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import Styles from "../Theme";
 import {
   Button,
   SafeAreaView,
@@ -12,8 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Theme from "../Theme";
-import Style from "../Styles";
-
+import Styles from "../Styles";
 import Logo from "../components/Logo";
 
 const Home = () => {
@@ -33,10 +31,10 @@ const Home = () => {
         <TouchableOpacity
           title="Play"
           color={"#3f5efb"}
-          style={Style.button}
+          style={Styles.button}
           onPress={() => navigation.navigate("Players")}
         >
-          <Text style={Style.TextButton}>Play</Text>
+          <Text style={Styles.TextButton}>Play</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
