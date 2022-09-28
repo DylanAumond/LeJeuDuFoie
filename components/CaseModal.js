@@ -4,7 +4,6 @@ import Theme from '../Theme'
 import Styles from "../Styles"
 
 const CaseModal = ({...props}) => {
-  console.log(props.case)
   // return all players on the selected case
   const players = () => {
     // check if at least a player is on the selected case
@@ -20,17 +19,12 @@ const CaseModal = ({...props}) => {
         transparent={true}
         visible={props.isOpen}
     >
-      <View style={{flex: 1, alignItems: "center",justifyContent:'center'}}>
+      <View style={{flex: 1, alignItems: "center",justifyContent:'center',backgroundColor: Theme.BLUR_EFFECT_COLOR }}>
         {/* Modal Content */}
         <View style={style.caseModal}>
             {/* Rule's icon */}
             <View style={[Styles.roundedFull,style.roundIcon]}>
-           {/* <ImageBackground
-              source={}
-              resizeMode="contain"
-              style={{flex:1, justifyContent: "center"}}
-              tintColor='white'
-  /> */}
+              {/* Icon */}
               {props.case !== undefined ?
               <ImageBackground
                 source={props.case.image}
@@ -43,7 +37,7 @@ const CaseModal = ({...props}) => {
 
             </View>
             {/* Rule's text */}
-            {props.case !== undefined ? <Text style={{fontSize:30,color:Theme.TEXT_MAIN_COLOR}}>{props.case.rule}</Text> : <Text>not found</Text>}
+            {props.case !== undefined ? <Text style={{fontSize:20,color:Theme.TEXT_MAIN_COLOR, width: '80%'}}>{props.case.rule}</Text> : <Text>not found</Text>}
             {/* list of players  */}
             { players() }
         </View>
@@ -56,12 +50,18 @@ const style = StyleSheet.create ({
   caseModal:{
     width: '90%',
     height: '40%',
+
     backgroundColor: Theme.PRIMARY_BACKGROUND_COLOR, 
+    borderRadius: 20,
+    borderWidth: 5,
+    borderColor: Theme.INPUT_MAIN_BORDER_COLOR,
+    opacity: 1,
+
     position: 'relative', 
     display: 'flex',
     alignItems: "center",
     justifyContent:'center',
-    borderRadius: 20
+
   },
   roundIcon:{
     position: 'absolute',

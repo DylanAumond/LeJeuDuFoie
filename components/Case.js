@@ -10,7 +10,7 @@ import {
 import { GameContexts } from "../GameContext";
 import PlayerPawn from "./PlayerPawn";
 import Theme from "../Theme";
-import Style from "../Styles"
+import Styles from "../Styles"
 
 
 const Case = ({ caseData, caseModal }) => {
@@ -28,7 +28,7 @@ const Case = ({ caseData, caseModal }) => {
     <TouchableOpacity
       onPressIn={() => caseModal(true, caseData, playersOnCase)}
       onPressOut={() => caseModal(false, caseData, playersOnCase)}
-      style={[styles.case, Style.roundedFull]}
+      style={[style.case, Styles.roundedFull]}
     >
 
       {/* case's image */}
@@ -49,7 +49,7 @@ const Case = ({ caseData, caseModal }) => {
   );
 };
 
-const styles = StyleSheet.create ({
+const style = StyleSheet.create ({
   case:{
     borderWidth: 3,
     borderColor: Theme.INPUT_MAIN_BORDER_COLOR,
