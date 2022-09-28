@@ -100,7 +100,7 @@ const BoardGame = () => {
     setPlayersOnCaseSelected(players);
   };
   return (
-    <SafeAreaView style={{display: 'flex', flex: 1,backgroundColor: Theme.MAIN_BACKGROUND_COLOR, justifyContent: 'space-around', alignItems: 'center'}}>
+    <SafeAreaView style={{display: 'flex', flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR, justifyContent: 'space-around', alignItems: 'center'}}>
         <StatusBar/>
           {/*  game logo */}
           <Logo size={"sm"}/>

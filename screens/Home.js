@@ -29,8 +29,6 @@ const Home = () => {
       {/* Button Play */}
       <View style={styles.btnContainer}>
         <TouchableOpacity
-          title="Play"
-          color={"#3f5efb"}
           style={Styles.button}
           onPress={() => navigation.navigate("Players")}
         >

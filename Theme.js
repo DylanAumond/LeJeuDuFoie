@@ -12,6 +12,6 @@ export default {
 
   PRIMARY_BACKGROUND_POPUP_COLOR: "#1C4766", //popup background (blue)
 
-  BLUR_EFFECT_COLOR: "#294749", // BLUR EFFECT COLOR (blue)
+  BLUR_EFFECT_COLOR: "rgba(41, 71, 73, 0.59)", // BLUR EFFECT COLOR (blue)
   TEXT_MAIN_COLOR: "#F5F5F5", // Text main color (white)
 };
