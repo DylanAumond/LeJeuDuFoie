@@ -5,15 +5,20 @@ import {
   SafeAreaView,
   StatusBar,
   Text,
+  StyleSheet,
+  TouchableOpacity,
   View,
+  ImageBackground,
 } from "react-native";
 import { GameContexts } from "../GameContext";
+import Logo from "../components/Logo";
 import { casesData } from "../assets/Casesdata";
 import Case from "../components/Case";
 import CaseModal from "../components/CaseModal";
 import { useNavigation } from "@react-navigation/native";
 import Theme from '../Theme'
-import Style from '../Styles'
+import Styles from "../Styles";
+import dices from "../assets/images/dices.png"
 
 const BoardGame = () => {
   const navigation = useNavigation();
@@ -95,12 +100,12 @@ const BoardGame = () => {
     setPlayersOnCaseSelected(players);
   };
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}>
+    <SafeAreaView style={{display: 'flex', flex: 1,backgroundColor: Theme.MAIN_BACKGROUND_COLOR, justifyContent: 'space-around', alignItems: 'center'}}>
         <StatusBar/>
+          {/*  game logo */}
+          <Logo size={"sm"}/>
           {/* current Player's pseudo */}
-          <Text>{players[currentPlayer].pseudo}</Text>
-          {/* current Player's position */}
-          <Text>{players[currentPlayer].position}</Text>
+          <Text style={{fontSize: 25, color: Theme.TEXT_MAIN_COLOR}}>Player: {players[currentPlayer].pseudo}</Text>
           {/* game's cases */}
           <FlatList data={casesData}
            contentContainerStyle={{flexGrow: 1, justifyContent: 'center', alignContent: 'center'}}
@@ -111,9 +116,29 @@ const BoardGame = () => {
           {/* case's modal */}
           <CaseModal case={caseSelected} isOpen={isCaseModalOpen} playersOnCase={playersOnCaseSelected}/>
           {/* button to roll the dice */}
-          <Button title='roll dice' disabled={wait} onPress={()=>rollDice()}/>
+          <TouchableOpacity style={[style.diceBtn,Styles.roundedFull]} disabled={wait} onPress={()=>rollDice()}>
+            <ImageBackground
+            source={dices}
+            resizeMode="contain"
+            style={{flex:1, justifyContent: "center"}}
+            tintColor='white'
+            />
+          </TouchableOpacity>
     </SafeAreaView>
   );
 };
+
+const style = StyleSheet.create ({
+  diceBtn:{
+    borderWidth: 3,
+    borderColor: Theme.INPUT_MAIN_BORDER_COLOR,
+    padding: '3%',
+    margin: '0.8%',
+    width: '20%',
+    height: undefined,
+    aspectRatio: 1 / 1,
+    backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
+  }
+})
 
 export default BoardGame;
