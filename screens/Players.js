@@ -17,7 +17,8 @@ import Player from "../components/Player";
 import { GameContexts } from "../GameContext";
 import Theme from "../Theme";
 import Logo from "../components/Logo";
-import AddUsers from "../components/AddUsersModal";
+import AddUsers from "../components/AddPlayersModal";
+import Style from "../Styles";
 
 const Players = () => {
   const navigation = useNavigation();
@@ -46,6 +47,11 @@ const Players = () => {
       {/* for each player return a component */}
       <FlatList
         data={players}
+        contentContainerStyle={{
+          flexGrow: 1,
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
         renderItem={({ item }) => (
           <Player player={item} delete={deletePlayer} />
         )}
@@ -54,13 +60,13 @@ const Players = () => {
         nestedScrollEnabled
       />
       {/* btn add users modal */}
-      <View style={styles.addUsersContainer}>
+      <View style={styles.btnAddPlayersContainer}>
         <TouchableOpacity
           onPress={() => {
             setShowAddUserModal(!showAddUserModal);
           }}
         >
-          <Text style={styles.addUsers}>+</Text>
+          <Text style={[styles.btnAddPlayes, Style.roundedFull]}>+</Text>
         </TouchableOpacity>
       </View>
 
@@ -70,13 +76,13 @@ const Players = () => {
       ) : null}
 
       {/* button to add player */}
-      <View>
-        <Button
-          color={"#3f5efb"}
+      <View style={[styles.playContainer, Style.button]}>
+        <TouchableOpacity
           disabled={players.length > 0 ? false : true}
-          title="Play"
           onPress={() => navigation.navigate("BoardGame")}
-        />
+        >
+          <Text style={Style.TextButton}>play</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -95,12 +101,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
   },
-  addUsersContainer: {
+  btnAddPlayersContainer: {
     width: "100%",
-    height: "10%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  addUsers: {
+  btnAddPlayes: {
+    fontSize: 50,
+    backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
     color: Theme.TEXT_MAIN_COLOR,
+    paddingHorizontal: 20,
+    marginBottom: 70,
+  },
+  playContainer: {
+    marginHorizontal: 100,
+    marginBottom: 50,
   },
 });
 

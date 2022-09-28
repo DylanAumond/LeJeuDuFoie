@@ -1,29 +1,49 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
+import Theme from "../Theme";
+import close from "../assets/close.png";
 
 const Player = ({ player, ...props }) => {
   return (
     <View style={styles.card}>
       {/* player's pseudo */}
-      <Text>{player.pseudo}</Text>
+      <Text style={styles.cardText}>{player.pseudo}</Text>
       {/* button to delete player*/}
-      <View style={styles.button}>
-        <Button onPress={() => props.delete(player.pseudo)} title="delete" />
-      </View>
+      <TouchableOpacity onPress={() => props.delete(player.pseudo)}>
+        <Image tintColor="white" source={close} style={styles.close} />
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    width: "90%",
     marginHorizontal: "5%",
-    backgroundColor: "white",
+
+    backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
     borderRadius: 10,
-    marginVertical: 14,
+    marginVertical: 50,
     padding: 10,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
-  button: {
-    width: "50%",
+
+  close: {
+    width: 15,
+    height: 15,
+  },
+  cardText: {
+    color: Theme.TEXT_MAIN_COLOR,
+    fontWeight: "bold",
   },
 });
 

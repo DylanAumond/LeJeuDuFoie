@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
   modalContent: {
     width: "70%",
     height: "50%",
+    borderRadius: 20,
     backgroundColor: Theme.PRIMARY_BACKGROUND_POPUP_COLOR,
   },
   addPlayersContainer: {
