@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: Theme.BLUR_EFFECT_COLOR,
   },
   btnClose: {
     position: "absolute",
@@ -107,6 +108,8 @@ const styles = StyleSheet.create({
     height: "50%",
     borderRadius: 20,
     backgroundColor: Theme.PRIMARY_BACKGROUND_POPUP_COLOR,
+    borderWidth: 5,
+    borderColor: Theme.INPUT_MAIN_BORDER_COLOR,
   },
   addPlayersContainer: {
     width: "100%",
