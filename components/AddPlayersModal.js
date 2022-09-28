@@ -61,7 +61,7 @@ const AddUsers = ({ ...props }) => {
             </TouchableOpacity>
 
             <View style={styles.addPlayersContainer}>
-              <View style={styles.addPlayersContent}>
+              <View>
                 {/* player's input */}
                 <TextInput
                   value={playerInput}
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   modalContent: {
-    width: "70%",
+    width: "90%",
     height: "50%",
     borderRadius: 20,
     backgroundColor: Theme.PRIMARY_BACKGROUND_POPUP_COLOR,
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
   },
   inputPlayersName: {
     backgroundColor: "white",
-    width: "50%",
-    paddingHorizontal: 20,
+    width: "90%",
+    paddingHorizontal: 50,
     paddingVertical: 5,
     borderRadius: 20,
   },
