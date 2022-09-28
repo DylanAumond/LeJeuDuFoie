@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, SafeAreaView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
+import { Button, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { playerAction } from '../actions/player'
 import { GameContexts } from '../GameContext'
 import Theme from '../Theme'
@@ -22,11 +22,13 @@ const Insctruction = ({ route, navigation }) => {
         {/*  game logo */}
         <Logo size={"sm"}/>
 
-        {/* case's rule */}
-        <Text style={{flex:1,justifyContent: 'space-around', alignItems: 'center', color: Theme.TEXT_MAIN_COLOR,fontSize:30}}>{rule}</Text>
+        <View style={{flex:1, alignItems: 'center', width: '80%'}}>
+          {/* case's rule */}
+          <Text style={{ color: Theme.TEXT_MAIN_COLOR,fontSize:30, marginTop: '30%', textAlign: 'center'}}>{rule}</Text>
+        </View>
 
         {/* button next */}
-        <TouchableOpacity title="Play" style={Styles.button}
+        <TouchableOpacity title="Play" style={[Styles.button, Style.btn]}
           onPress={() => {
             // if case has an action
             if(route.params.case.action !== undefined){
@@ -55,5 +57,11 @@ const Insctruction = ({ route, navigation }) => {
     </SafeAreaView>
   )
 }
+
+const Style = StyleSheet.create ({
+  btn : {
+    marginBottom : 70,
+  }
+})
 
 export default Insctruction
