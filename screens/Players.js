@@ -23,6 +23,12 @@ const Players = () => {
   const navigation = useNavigation();
   const { players, setPlayers } = useContext(GameContexts); // players' list
   const [showAddUserModal, setShowAddUserModal] = useState(false); // modal add players
+
+  //remove a player from the players' list
+  function deletePlayer(playerPseudo) {
+    setPlayers(players.filter(p => p.pseudo != playerPseudo));
+  }
+
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}

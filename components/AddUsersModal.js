@@ -29,10 +29,7 @@ const AddUsers = ({ ...props }) => {
       return setPlayers([...players, newPlayer]);
     }
   }
-  //remove a player from the players' list
-  function deletePlayer(playerPseudo) {
-    setPlayers(players.filter(p => p.pseudo != playerPseudo));
-  }
+
   //check player pseudo
   function checkPlayerPseudo(pseudo) {
     // check player's pseudo length
