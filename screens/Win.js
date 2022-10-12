@@ -1,59 +1,105 @@
-import React, { useContext } from 'react'
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useContext } from "react";
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { useNavigation } from '@react-navigation/native'
-import { GameContexts } from '../GameContext'
+import { useNavigation } from "@react-navigation/native";
+import { GameContexts } from "../GameContext";
 
-import Theme from '../Theme'
-import Styles from '../Styles'
+import Theme from "../Theme";
+import Styles from "../Styles";
 
-const Win = () => {
-    const navigation = useNavigation();
+import imgWin from "../assets/images/trophee.png";
+import Logo from "../components/Logo";
 
-    // get the game's context
-    const {
-      players,setPlayers,  // players' list
-      currentPlayer,setCurrentPlayer // current player
-    }= useContext(GameContexts)
+const Win = ({ route }) => {
+  const navigation = useNavigation();
 
-    // reset all players' position
-    function resetPlayersPosition(players){
-        return players.map((player) => {
-            return { ...player, position: 0}
-        })
-    }
+  // get the game's context
+  const {
+    players,
+    setPlayers, // players' list
+    currentPlayer,
+    setCurrentPlayer, // current player
+  } = useContext(GameContexts);
 
+  // reset all players' position
+  function resetPlayersPosition(players) {
+    return players.map(player => {
+      return { ...player, position: 0 };
+    });
+  }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR, justifyContent: 'space-around', alignItems: 'center'}}>
-        <View>
-            <Text>WIN</Text>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Theme.MAIN_BACKGROUND_COLOR,
+        justifyContent: "space-around",
+        alignItems: "center",
+      }}
+    >
+      <View style={styles.container}>
+        <Logo size={"md"} />
+
+        <Text style={[Theme.TEXT_MAIN_COLOR, styles.title]}>VAINQUEUR</Text>
+
+        <Text style={styles.pseudo}>{route.params.player.pseudo}</Text>
+
+        <Image source={imgWin} style={styles.img} />
 
         {/* button next */}
-        <TouchableOpacity title="Play" style={[Styles.button, Style.btn]}
-            onPress={() => 
-            {
-                // reset players' position
-                setPlayers(resetPlayersPosition(players))
+        <TouchableOpacity
+          title="Play"
+          style={[Styles.button, styles.btn]}
+          onPress={() => {
+            // reset players' position
+            setPlayers(resetPlayersPosition(players));
 
-                // reset current player
-                setCurrentPlayer(0)
-                
-                // go back to the players's page
-                navigation.navigate('Players');
-            }}
-          >
-            <Text style={Styles.TextButton}>Play</Text>
-          </TouchableOpacity>
-        </View>
+            // reset current player
+            setCurrentPlayer(0);
+
+            // go back to the players's page
+            navigation.navigate("Players");
+          }}
+        >
+          <Text style={Styles.TextButton}>Play</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-const Style = StyleSheet.create ({
-    btn : {
-      marginBottom : 70,
-    }
-  })
+const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  img: {
+    marginVertical: 100,
+  },
+  btn: {
+    fontSize: 50,
+    paddingHorizontal: 70,
+    marginTop: 40,
+  },
+  title: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 40,
+    marginTop: 20,
+  },
+  pseudo: {
+    marginTop: 20,
+    color: Theme.INPUT_MAIN_BACKGROUND_COLOR,
+    fontSize: 15,
+  },
+});
 
-export default Win
+export default Win;
