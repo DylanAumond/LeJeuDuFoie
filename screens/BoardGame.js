@@ -73,6 +73,13 @@ const BoardGame = () => {
       clearInterval(animationMoove)
       // reset the wait
       setWait(false)
+
+      // if player is on win case
+      if(newPosition === casesData.length - 1) {
+        // redirect player to the win screen
+        return navigation.navigate("Win")
+      }
+
       // redirect player to the instruction's page
       navigation.navigate("Insctruction", { case: casesData[newPosition] });
     }, 500);
@@ -102,19 +109,24 @@ const BoardGame = () => {
   return (
     <SafeAreaView style={{display: 'flex', flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR, justifyContent: 'space-around', alignItems: 'center'}}>
         <StatusBar/>
+
           {/*  game logo */}
           <Logo size={"sm"}/>
+
           {/* current Player's pseudo */}
           <Text style={{fontSize: 25, color: Theme.TEXT_MAIN_COLOR}}>Player: {players[currentPlayer].pseudo}</Text>
+
           {/* game's cases */}
           <FlatList data={casesData}
            contentContainerStyle={{flexGrow: 1, justifyContent: 'center', alignContent: 'center'}}
-          renderItem={({ item })=> <Case caseData={item} caseModal={onPressCaseModalHandler}/>}
-          listKey={(item) => item.id}
-          numColumns={6}
+            renderItem={({ item })=> <Case caseData={item} caseModal={onPressCaseModalHandler}/>}
+            listKey={(item) => item.id}
+            numColumns={6}
           />
+
           {/* case's modal */}
           <CaseModal case={caseSelected} isOpen={isCaseModalOpen} playersOnCase={playersOnCaseSelected}/>
+
           {/* button to roll the dice */}
           <TouchableOpacity style={[style.diceBtn,Styles.roundedFull]} disabled={wait} onPress={()=>rollDice()}>
             <ImageBackground
@@ -124,6 +136,7 @@ const BoardGame = () => {
             tintColor='white'
             />
           </TouchableOpacity>
+
     </SafeAreaView>
   );
 };
