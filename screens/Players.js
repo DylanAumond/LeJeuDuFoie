@@ -2,14 +2,11 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useContext } from "react";
 import { useState } from "react";
 import {
-  Button,
   FlatList,
-  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";

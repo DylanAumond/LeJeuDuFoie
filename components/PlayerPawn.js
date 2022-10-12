@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 
 const PlayerPawn = ({player}) => {
   return (
-    <View style={{backgroundColor: 'white',borderColor: 'yellow',width: 20, height: 20}}></View>
+    <View style={{backgroundColor: player.color, borderColor: 'yellow',width: 20, height: 20}}></View>
   )
 }
 

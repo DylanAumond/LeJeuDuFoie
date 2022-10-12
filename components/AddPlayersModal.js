@@ -19,9 +19,16 @@ const AddUsers = ({ ...props }) => {
   const { players, setPlayers } = useContext(GameContexts); // players' list
   const [playerInput, setPlayerInput] = useState(""); // player's input value
 
+  const colorList = [
+    "#ffffff",
+    "#000000",
+    "#f0f0f0",
+    "#990000"
+  ]
+
   //add a player to the players' list
   function addPlayer() {
-    const newPlayer = { pseudo: playerInput, position: 0 };
+    const newPlayer = { pseudo: playerInput, position: 0,color: colorList[players.length] };
     if (checkPlayerPseudo(newPlayer.pseudo)) {
       // reset the player's input value
       setPlayerInput("");
@@ -42,6 +49,13 @@ const AddUsers = ({ ...props }) => {
       console.log("Player pseudo must be unique");
       return false;
     }
+
+    // check number of players
+    if (players.length >= 12){
+      console.log("Number of players must be over 12");
+      return false;
+    }
+
     return true;
   }
 

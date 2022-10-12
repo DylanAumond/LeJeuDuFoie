@@ -60,12 +60,13 @@ export const casesData = [
     {
         id: 10,
         rule: 'Foie',
-        image: require('./images/liver.png')
+        image: require('./images/liver.png'),
+        action: { type: 'liver'}
     },
     {
         id: 11,
         rule: 'Joue à SHI-FU-MI avec un joeueur le perdant boit 5 gorgées',
-        image: require('./images/fight.png')
+        image: require('./images/fight.png'),
     },
     {
         id: 12,
@@ -136,7 +137,8 @@ export const casesData = [
     {
         id: 24,
         rule: 'Foie',
-        image: require('./images/liver.png')
+        image: require('./images/liver.png'),
+        action: { type: 'liver'}
     },
     {
         id: 25,
@@ -207,7 +209,8 @@ export const casesData = [
     {
         id: 37,
         rule: 'Foie',
-        image: require('./images/liver.png')
+        image: require('./images/liver.png'),
+        action: { type: 'liver'}
     },
     {
         id: 38,
