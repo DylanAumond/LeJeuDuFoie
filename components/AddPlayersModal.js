@@ -50,15 +50,18 @@ const AddUsers = ({ ...props }) => {
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
           <View>
-            {/* btn close modal */}
-            <TouchableOpacity
-              onPress={() => {
-                props.close(false);
-              }}
-              style={styles.btnClose}
-            >
-              <Image source={close} style={styles.close} />
-            </TouchableOpacity>
+            <View style={styles.headerModal}>
+              <Text style={styles.title}>Ajoute un soldat </Text>
+              {/* btn close modal */}
+              <TouchableOpacity
+                onPress={() => {
+                  props.close(false);
+                }}
+                style={styles.btnClose}
+              >
+                <Image source={close} style={styles.close} />
+              </TouchableOpacity>
+            </View>
 
             <View style={styles.addPlayersContainer}>
               <View>
@@ -94,14 +97,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Theme.BLUR_EFFECT_COLOR,
   },
-  btnClose: {
-    position: "absolute",
-    top: "5%",
-    right: "10%",
+  headerModal: {
+    height: 40,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
   },
   close: {
     width: 20,
     height: 20,
+    marginRight: 20,
+    marginTop: 10,
+  },
+  title: {
+    color: "white",
+    marginLeft: 20,
+    marginTop: 10,
+    fontSize: 20,
   },
   modalContent: {
     width: "90%",
