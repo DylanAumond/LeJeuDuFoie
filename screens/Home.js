@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { Linking } from "react-native";
 import React from "react";
 import {
   Button,
@@ -34,6 +35,12 @@ const Home = () => {
         >
           <Text style={Styles.TextButton}>Play</Text>
         </TouchableOpacity>
+        <Text
+          onPress={() => Linking.openURL("https://www.dadev.fr/")}
+          style={styles.copyright}
+        >
+          Copyright 2022 - Crée par Dadev
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -49,11 +56,18 @@ const styles = StyleSheet.create({
   },
 
   btnContainer: {
+    marginTop: 20,
     width: "100%",
     height: "80%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  copyright: {
+    marginTop: 39,
+    color: "white",
+    textDecorationLine: "underline",
   },
 });
 

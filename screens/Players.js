@@ -48,8 +48,9 @@ const Players = () => {
       <FlatList
         data={players}
         contentContainerStyle={{
-          flexGrow: 1,
           flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "flex-start",
           flexWrap: "wrap",
         }}
         renderItem={({ item }) => (

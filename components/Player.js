@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
     borderRadius: 10,
-    marginVertical: 50,
+    marginVertical: 10,
     padding: 10,
     display: "flex",
     flexDirection: "row",
