@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 20,
     backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
-    marginTop: 20,
+    marginBottom: 30,
   },
   inputPlayersName: {
     backgroundColor: "white",
@@ -142,6 +142,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     paddingVertical: 5,
     borderRadius: 20,
+    marginBottom: 20,
   },
 });
 
