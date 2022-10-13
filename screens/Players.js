@@ -28,9 +28,7 @@ const Players = () => {
   }
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}
-    >
+    <SafeAreaView style={styles.playersContainer}>
       <StatusBar />
       {/* Logo */}
       <View style={styles.logo}>
@@ -87,6 +85,10 @@ const Players = () => {
 };
 
 const styles = StyleSheet.create({
+  playersContainer: {
+    flex: 1,
+    backgroundColor: Theme.MAIN_BACKGROUND_COLOR,
+  },
   logo: {
     width: "100%",
     height: "25%",
