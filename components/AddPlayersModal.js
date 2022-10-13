@@ -22,7 +22,7 @@ const AddUsers = ({ ...props }) => {
   const colorList = [
     "#922B21",
     "#000000",
-    "#f0f00",
+    "#00FFFF",
     "#990000",
     "#1A5276",
     "#148F77",

@@ -63,7 +63,7 @@ const CaseModal = ({ ...props }) => {
             <Text>not found</Text>
           )}
           {/* list of players  */}
-          {players()}
+          <View style={style.playersContainer}>{players()}</View>
         </View>
       </View>
     </Modal>
@@ -107,6 +107,7 @@ const style = StyleSheet.create({
     backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
   },
   textPlayer: {
+    marginTop: 20,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -115,6 +116,14 @@ const style = StyleSheet.create({
   text: {
     fontSize: 18,
     color: Theme.TEXT_MAIN_COLOR,
+  },
+  playersContainer: {
+    marginTop: 20,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 });
 
