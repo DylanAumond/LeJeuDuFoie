@@ -16,7 +16,6 @@ import { Alert, BackHandler } from "react-native";
 const Stack = createNativeStackNavigator()
 
 export default function App() {
-  useEffect(() => {
     const backAction = () => {
       Alert.alert("Attention", "Etes vous sure de quitter l'application ?", [
         {
@@ -29,11 +28,11 @@ export default function App() {
       return true;
     };
 
-    const backHandler = BackHandler.addEventListener(
+    BackHandler.addEventListener(
       "hardwareBackPress",
       backAction
     );
-  }, []);
+
 
   const [loaded] = useFonts({
     Nickainley: require('./assets/fonts/Nickainley-Normal.otf'),
