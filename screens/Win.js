@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   pseudo: {
     marginTop: 35,
     color: Theme.INPUT_MAIN_BACKGROUND_COLOR,
-    fontSize: 15,
+    fontSize: 20,
   },
 });
 
