@@ -25,10 +25,8 @@ const BoardGame = () => {
 
   // get the game's context
   const {
-    players,
-    setPlayers, // players' list
-    currentPlayer,
-    setCurrentPlayer, // current player
+    players,setPlayers, // players' list
+    currentPlayer,setCurrentPlayer, // current player
   } = useContext(GameContexts);
 
   // enable player to do action
@@ -41,72 +39,128 @@ const BoardGame = () => {
   // caseModal players's list
   const [playersOnCaseSelected, setPlayersOnCaseSelected] = useState([]);
 
-  function rollDice() {
+  var interval
+
+  async function rollDice() {
     // enable player to play until turn is ended
     setWait(true);
 
     // get a random number between 1 and 6
     const diceScore = Math.floor(Math.random() * 6 + 1);
 
-    // new player's position
-    const newPosition = calcPosition(
-      players[currentPlayer].position,
-      diceScore
-    );
+      makePlayerMove(diceScore, ()=>{
+        // get new player's position
+        const newPosition = players[currentPlayer].position
 
-    // current player moves until he arrived to his new position
-    const animationMoove = setInterval(() => {
-      // if current player's position is lower than the new position
-      if (players[currentPlayer].position < newPosition) {
-        //player moves forward
-        players[currentPlayer].position++;
-        // refresh players' list
-        return setPlayers([...players]);
-      }
-      // if current player's position is higher than the new position
-      if (players[currentPlayer].position > newPosition) {
-        //player moves forward
-        players[currentPlayer].position--;
-        // refresh players' list
-        return setPlayers([...players]);
-      }
-      // clear the interval
-      clearInterval(animationMoove);
-      // reset the wait
-      setWait(false);
+        if(casesData[newPosition].action !== undefined && casesData[newPosition].action.type == 'liver'){
+          // if case is liver
+            makePlayerMove(diceScore, ()=>{
 
-      // if player is on win case
-      if (newPosition === casesData.length - 1) {
-        // redirect player to the win screen
-        return navigation.navigate("Win", { player: players[currentPlayer] });
-      }
+              // get the newPlayer position
+              let secondPositions = players[currentPlayer].position
 
-      // redirect player to the instruction's page
-      navigation.navigate("Insctruction", { case: casesData[newPosition] });
-    }, 500);
+              // reset the wait
+              setWait(false)
+
+              // if player is on win case
+              if (secondPositions === casesData.length - 1) {
+
+                // redirect player to the win screen
+                return navigation.navigate("Win", { player: players[currentPlayer] });
+              }
+
+              // redirect player to the instruction's page
+              navigation.navigate("Insctruction", { case: casesData[secondPositions] });
+            })
+        }
+        else{
+          // reset the wait
+          setWait(false)
+
+          // if player is on win case
+          if (newPosition === casesData.length - 1) {
+            // redirect player to the win screen
+            return navigation.navigate("Win", { player: players[currentPlayer] });
+          }
+
+          // redirect player to the instruction's page
+          navigation.navigate("Insctruction", { case: casesData[newPosition] });
+        }
+      })
   }
 
   // calculate the new players' position
   function calcPosition(position, diceScore) {
+
     // calculate the new players' position
     let newPosition = position + diceScore;
+
     // check if the new position is possible
     if (newPosition > casesData.length - 1) {
+
       // return the new position
       return position + (casesData.length - 1 - newPosition);
     }
+
     return newPosition;
   }
 
+  function makePlayerMove(diceScore, cb){
+
+    // new player's position
+    const newPosition = calcPosition(
+      players[currentPlayer].position,
+      diceScore
+    )
+
+      // current player moves until he arrived to his new position
+    interval = setInterval(() => {
+
+        // if current player's position is lower than the new position
+        if (players[currentPlayer].position < newPosition) {
+
+          //player moves forward
+          players[currentPlayer].position++;
+
+          // refresh players' list
+          return setPlayers([...players]);
+        }
+
+        // if current player's position is higher than the new position
+        if (players[currentPlayer].position > newPosition) {
+
+          //player moves forward
+          players[currentPlayer].position--;
+
+          // refresh players' list
+          return setPlayers([...players]);
+        }
+
+        // if player is on his new position
+        if (players[currentPlayer].position == newPosition) {
+
+          // clear the interval
+          clearInterval(interval)
+          cb()
+
+        }
+
+    },500)
+  }
+
+
   // handle press on a case
   const onPressCaseModalHandler = (modalState, modalCase, players) => {
+
     // set the casModal visibility
     setCaseModalOpen(modalState);
+
     // set the selected case
     setCaseSelected(modalCase);
+
     // set the casSelected players list
     setPlayersOnCaseSelected(players);
-  };
+  }
   return (
     <SafeAreaView
       style={{
