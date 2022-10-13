@@ -33,8 +33,6 @@ export default function App() {
       "hardwareBackPress",
       backAction
     );
-
-    return () => backHandler.remove();
   }, []);
 
   const [loaded] = useFonts({
