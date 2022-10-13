@@ -36,14 +36,7 @@ const Win = ({ route }) => {
   }
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: Theme.MAIN_BACKGROUND_COLOR,
-        justifyContent: "space-around",
-        alignItems: "center",
-      }}
-    >
+    <SafeAreaView style={Styles.container}>
       <View style={styles.container}>
         <Logo size={"md"} />
 
@@ -96,7 +89,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   pseudo: {
-    marginTop: 20,
+    marginTop: 35,
     color: Theme.INPUT_MAIN_BACKGROUND_COLOR,
     fontSize: 15,
   },

@@ -19,6 +19,7 @@ import { useNavigation } from "@react-navigation/native";
 import Theme from "../Theme";
 import Styles from "../Styles";
 import dices from "../assets/images/dices.png";
+import PlayerPawn from "../components/PlayerPawn";
 
 const BoardGame = () => {
   const navigation = useNavigation();
@@ -162,24 +163,26 @@ const BoardGame = () => {
     setPlayersOnCaseSelected(players);
   }
   return (
-    <SafeAreaView
-      style={{
-        display: "flex",
-        flex: 1,
-        backgroundColor: Theme.MAIN_BACKGROUND_COLOR,
-        justifyContent: "space-around",
-        alignItems: "center",
-      }}
-    >
+    <SafeAreaView style={[{ display: "flex" }, Styles.container]}>
       <StatusBar />
 
       {/*  game logo */}
       <Logo size={"sm"} />
 
       {/* current Player's pseudo */}
-      <Text style={{ fontSize: 25, color: Theme.TEXT_MAIN_COLOR }}>
-        Player: {players[currentPlayer].pseudo}
-      </Text>
+      <View style={style.textPlayer}>
+        <Text style={Styles.textlg}>joueur :</Text>
+        <View
+          style={[
+            {
+              backgroundColor: players[currentPlayer].color,
+            },
+            Styles.roundedFull,
+            Styles.colorPlayer,
+          ]}
+        ></View>
+        <Text style={Styles.textlg}>{players[currentPlayer].pseudo}</Text>
+      </View>
 
       {/* game's cases */}
       <FlatList
@@ -212,7 +215,7 @@ const BoardGame = () => {
         <ImageBackground
           source={dices}
           resizeMode="contain"
-          style={{ flex: 1, justifyContent: "center" }}
+          style={Styles.caseModalBg}
           tintColor="white"
         />
       </TouchableOpacity>
@@ -230,6 +233,12 @@ const style = StyleSheet.create({
     height: undefined,
     aspectRatio: 1 / 1,
     backgroundColor: Theme.INPUT_MAIN_BACKGROUND_COLOR,
+  },
+  textPlayer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
 });
 

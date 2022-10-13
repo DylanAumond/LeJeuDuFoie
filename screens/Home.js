@@ -19,9 +19,7 @@ const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView
-      style={{ flex: 1, backgroundColor: Theme.MAIN_BACKGROUND_COLOR }}
-    >
+    <SafeAreaView style={styles.homeContainer}>
       <StatusBar />
       {/* Logo */}
       <View style={styles.logo}>
@@ -47,6 +45,10 @@ const Home = () => {
 };
 
 const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    backgroundColor: Theme.MAIN_BACKGROUND_COLOR,
+  },
   logo: {
     width: "100%",
     height: "50%",

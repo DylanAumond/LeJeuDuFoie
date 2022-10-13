@@ -20,15 +20,27 @@ const AddUsers = ({ ...props }) => {
   const [playerInput, setPlayerInput] = useState(""); // player's input value
 
   const colorList = [
-    "#ffffff",
+    "#922B21",
     "#000000",
-    "#f0f0f0",
-    "#990000"
-  ]
+    "#f0f00",
+    "#990000",
+    "#1A5276",
+    "#148F77",
+    "#B7950B",
+    "#AF601A",
+    "#909497",
+    "#1C2833",
+    "#FFFF00",
+    "#00FF00",
+  ];
 
   //add a player to the players' list
   function addPlayer() {
-    const newPlayer = { pseudo: playerInput, position: 0,color: colorList[players.length] };
+    const newPlayer = {
+      pseudo: playerInput,
+      position: 0,
+      color: colorList[players.length],
+    };
     if (checkPlayerPseudo(newPlayer.pseudo)) {
       // reset the player's input value
       setPlayerInput("");
@@ -51,7 +63,7 @@ const AddUsers = ({ ...props }) => {
     }
 
     // check number of players
-    if (players.length >= 12){
+    if (players.length >= 12) {
       console.log("Number of players must be over 12");
       return false;
     }

@@ -1,10 +1,17 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from "react";
+import { Text, View } from "react-native";
 
-const PlayerPawn = ({player}) => {
+import Styles from "../Styles";
+
+const PlayerPawn = ({ player }) => {
   return (
-    <View style={{backgroundColor: player.color, borderColor: 'yellow',width: 20, height: 20}}></View>
-  )
-}
+    <View
+      style={[
+        { backgroundColor: player.color, width: 10, height: 10 },
+        Styles.roundedFull,
+      ]}
+    ></View>
+  );
+};
 
-export default PlayerPawn
+export default PlayerPawn;
