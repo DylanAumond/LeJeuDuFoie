@@ -33,7 +33,7 @@ export const casesData = [
     },
     {
         id: 6,
-        rule: 'Tout les joueurs boivent deux gorgées',
+        rule: 'Tous les joueurs boivent deux gorgées',
         image: require('./images/cheers.png')
     },
     {
@@ -147,7 +147,7 @@ export const casesData = [
     },
     {
         id: 26,
-        rule: 'Le joueur avec le plus de diplomes boit',
+        rule: 'Le joueur avec le plus de diplomes boit une gorgées pour chaque diplome',
         image: require('./images/degree.png')
     },
     {
@@ -255,7 +255,7 @@ export const casesData = [
     },
     {
         id: 45,
-        rule:  'Tout les joueurs boivent 3 gorgées',
+        rule:  'Tos les joueurs boivent 3 gorgées',
         image: require('./images/cheers.png')
     },
     {
